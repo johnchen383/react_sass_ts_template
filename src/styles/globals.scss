@@ -20,12 +20,22 @@ body {
     line-height: 1.3;
     font-size: $font-med;
     color: $grayishBlue;
+
+    &.no-scroll{
+        overflow: hidden;
+    }
 }
 
 a,
 a:hover,
 a:visited {
     text-decoration: none;
+}
+
+//Spacing
+.container{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 //Flexbox styles

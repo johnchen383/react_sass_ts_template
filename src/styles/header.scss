@@ -1,8 +1,30 @@
 @import "variables";
+@import "animations";
 
 .header {
-    nav {
-        padding: 1.0625rem 1.5rem;
+    //Header animations
+    //if header has class of open as well
+    &.open{
+        .header__toggle{
+            > span:first-child {
+                transform: rotate(45deg)
+            }
+    
+            > span:last-child {
+                transform: rotate(-45deg);
+            }
+    
+            > span:nth-child(2) {
+                opacity: 0;                
+            }
+        }
+    }
+
+    nav{
+        position: relative;
+        background-color: $white;
+        padding-top: 1.0625rem;
+        padding-bottom: 1.0625rem;
     }
 
     &__logo {
@@ -12,18 +34,38 @@
         }
     }
 
-    //mobile menu
-    &__menu {
+    //mobile menu toggle
+    &__toggle {
         //direct child combinator '>'
         > span {
             display: block;
             width: 26px;
             height: 2px;
             background-color: $darkBlue;
+            transition: all 300ms ease-in-out;
+            transform-origin: 3px 1px;
 
             &:not(:last-child) {
-                margin-bottom: 3px;
+                margin-bottom: 5px;
             }
+        }
+    }
+
+    &__menu {
+        margin-top: 1.5rem;
+        position: absolute;
+        width: calc(100% - 3rem);
+        left: 50%;                      //centering a position absolute
+        transform: translateX(-50%);       //centering a position absolute
+        background: $white;
+        padding: 1.625rem;
+        border-radius: 5px;
+
+        > a {
+            display: block;
+            padding: 0.625rem;
+            text-align: center;
+            color: $darkBlue;
         }
     }
 
@@ -69,5 +111,14 @@
         &:hover{
             opacity: 0.75;
         }
+    }
+
+    .overlay{
+        background-image: linear-gradient($darkBlue, transparent);
+        position: fixed;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 }
